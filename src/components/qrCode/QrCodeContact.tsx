@@ -1,4 +1,4 @@
-import { useState, useRef, Activity } from "react";
+import { useState, useRef } from "react";
 import QRCodeRenderer from "./QRCodeRenderer";
 import type { QRCodeRendererHandle } from "./QRCodeRenderer";
 import type { Phone, Address } from "../../types/QrCode";
@@ -138,7 +138,7 @@ export default function QrCodeContactV4() {
           autoComplete="off"
           onSubmit={(e) => e.preventDefault()}
         >
-          <Activity mode={activeTab === "identite" ? "visible" : "hidden"}>
+          {activeTab === "identite" && (
             <div className="space-y-2">
               <Input label="Prénom" value={firstName} onChange={setFirstName} />
               <Input label="Nom" value={lastName} onChange={setLastName} />
@@ -150,14 +150,14 @@ export default function QrCodeContactV4() {
               <Input label="Suffixe" value={suffix} onChange={setSuffix} />
               <Input label="Email" value={email} onChange={setEmail} />
             </div>
-          </Activity>
-          <Activity mode={activeTab === "pro" ? "visible" : "hidden"}>
+          )}
+          {activeTab === "pro" && (
             <div className="space-y-2">
               <Input label="Organisation" value={org} onChange={setOrg} />
               <Input label="Titre" value={title} onChange={setTitle} />
             </div>
-          </Activity>
-          <Activity mode={activeTab === "phones" ? "visible" : "hidden"}>
+          )}
+          {activeTab === "phones" && (
             <div className="space-y-2">
               {phones.map((phone, idx) => (
                 <div key={idx} className="flex gap-2 items-center mb-1">
@@ -192,8 +192,8 @@ export default function QrCodeContactV4() {
                 + Ajouter un téléphone
               </button>
             </div>
-          </Activity>
-          <Activity mode={activeTab === "addresses" ? "visible" : "hidden"}>
+          )}
+          {activeTab === "addresses" && (
             <div className="space-y-2">
               {addresses.map((address, idx) => (
                 <div key={idx} className="border rounded p-2 mb-2 bg-white">
@@ -264,8 +264,8 @@ export default function QrCodeContactV4() {
                 + Ajouter une adresse
               </button>
             </div>
-          </Activity>
-          <Activity mode={activeTab === "divers" ? "visible" : "hidden"}>
+          )}
+          {activeTab === "divers" && (
             <div className="space-y-2">
               <Input label="Photo (URL)" value={photo} onChange={setPhoto} />
               <Input
@@ -275,7 +275,7 @@ export default function QrCodeContactV4() {
               />
               <Input label="Révision date" value={rev} readOnly={true} />
             </div>
-          </Activity>
+          )}
         </form>
       </div>
       <div className="flex items-start justify-center min-w-[220px] mt-6 md:mt-0">

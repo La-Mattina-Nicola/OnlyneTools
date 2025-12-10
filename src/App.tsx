@@ -1,7 +1,6 @@
-import { Routes } from "react-router";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import QrCodePage from "./routes/QrCode";
-import { Route } from "react-router";
 import Home from "./routes/Home";
 
 function App() {

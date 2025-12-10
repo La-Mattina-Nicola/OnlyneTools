@@ -1,4 +1,4 @@
-import { Activity, useState } from "react";
+import { useState } from "react";
 import QrCodeContact from "../components/qrCode/QrCodeContact";
 import QrCodeEvent from "../components/qrCode/QrCodeEvent";
 import QrCodeWeb from "../components/qrCode/QrCodeSiteWeb";
@@ -41,15 +41,9 @@ function QrCodePage() {
             Site Web
           </button>
         </div>
-        <Activity mode={isShowingSidebar === "contact" ? "visible" : "hidden"}>
-          <QrCodeContact />
-        </Activity>
-        <Activity mode={isShowingSidebar === "event" ? "visible" : "hidden"}>
-          <QrCodeEvent />
-        </Activity>
-        <Activity mode={isShowingSidebar === "web" ? "visible" : "hidden"}>
-          <QrCodeWeb />
-        </Activity>
+        {isShowingSidebar === "contact" && <QrCodeContact />}
+        {isShowingSidebar === "event" && <QrCodeEvent />}
+        {isShowingSidebar === "web" && <QrCodeWeb />}
       </div>
     </main>
   );
